@@ -1,0 +1,11 @@
+# Neovim
+.plugin/
+.mason/
+shada/
+undo/
+swap/
+backup/
+spell/
+
+# OS
+.DS_Store
