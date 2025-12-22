@@ -9,7 +9,7 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 -- For lualine
-vim.opt.showmode = false
+-- vim.opt.showmode = false
 
 -- Mouse Options
 vim.opt.mouse = "a"

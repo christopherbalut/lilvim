@@ -1,32 +1,13 @@
 -- Keymaps
--- local map = vim.keymap.set
-
--- Plugin Specific Mappings
--- Telescope
-local builtin = require("telescope.builtin") -- since not lazy loaded
-vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" }) -- desc = "Telescope find files"
-vim.keymap.set("n", "<leader>fg", builtin.live_grep, {}) -- desc = "Telescope live grep"
-vim.keymap.set("n", "<leader>fb", builtin.buffers, {}) -- desc = "Telescope buffers"
-vim.keymap.set("n", "<leader>fh", builtin.help_tags, {}) -- desc = "Telescope help tags"
-vim.keymap.set("n", "<C-p>", builtin.git_files, {})
-vim.keymap.set("n", "<leader>fs", function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end)
-
--- Treesitter
--- For Treesitter Playground: Include in NeoVim, use:
--- :Inspect to show the highlight groups under the cursor
--- :InspectTree to show the parsed syntax tree ("TSPlayground")
--- :EditQuery to open the Live Query Editor (Nvim 0.10+)
-
 -- Nvim-lspconfig
-vim.keymap.set("n", "K", vim.lsp.buf.hover, {}) -- desc = LSP hover
-vim.keymap.set("n", "gd", vim.lsp.buf.definition, {}) -- desc = LSP definition
-vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {}) -- desc = "Lsp refactoring suggestions"
+vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover" }) -- desc = LSP hover
+vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP definition" }) -- desc = LSP definition
+vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP refactoring suggestions" }) -- desc = "Lsp refactoring suggestions"
 
 -- None-ls
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {}) -- desc = "formatting everyting in buffer using none-ls
-
+-- Vim-fugitive
+vim.keymap.set("n", "<leader>gs", "<cmd>Git<CR>", { desc = "Git status" })
 
 -- Vim Specific Mappings
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
@@ -48,10 +29,10 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 
 -- delete but don't save
-vim.keymap.set("n", "<leader>d", "\"_d")
-vim.keymap.set("v", "<leader>d", "\"_d")
+vim.keymap.set("n", "<leader>d", '"_d')
+vim.keymap.set("v", "<leader>d", '"_d')
 
-vim.keymap.set("n", "Q", "<nop>") -- no more :Q 
+vim.keymap.set("n", "Q", "<nop>") -- no more :Q
 
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>") -- go to new project and create new tmux session
 
@@ -63,8 +44,10 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- replace word under cursor
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true }) -- make file executable
-
-
-
+vim.keymap.set(
+	"n",
+	"<leader>s",
+	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+	{ desc = "Repace word under cursor" }
+) -- replace word under cursor
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true, desc = "Make current file executable" }) -- make file executable
