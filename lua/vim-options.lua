@@ -4,6 +4,9 @@ vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
+-- Saving to clipboard
+vim.opt.clipboard = "unnamedplus"
+
 -- Line Numbers
 vim.opt.number = true
 vim.opt.relativenumber = true

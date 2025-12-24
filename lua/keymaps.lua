@@ -1,4 +1,26 @@
 -- Keymaps
+-- local map = vim.keymap.set
+
+-- Plugin Specific Mappings
+-- Telescope
+local builtin = require("telescope.builtin") -- since not lazy loaded
+vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" }) -- desc = "Telescope find files"
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Telescope live grep" }) -- desc = "Telescope live grep"
+vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope buffers" }) -- desc = "Telescope buffers"
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help tags" }) -- desc = "Telescope help tags"
+vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Telescope find git files" })
+vim.keymap.set("n", "<leader>fs", function()
+	builtin.grep_string({ search = vim.fn.input("Grep > ") })
+end, {
+	desc = "Find string",
+})
+
+-- Treesitter
+-- For Treesitter Playground: Include in NeoVim, use:
+-- :Inspect to show the highlight groups under the cursor
+-- :InspectTree to show the parsed syntax tree ("TSPlayground")
+-- :EditQuery to open the Live Query Editor (Nvim 0.10+)
+
 -- Nvim-lspconfig
 vim.keymap.set("n", "K", vim.lsp.buf.hover, { desc = "LSP Hover" }) -- desc = LSP hover
 vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP definition" }) -- desc = LSP definition
@@ -6,11 +28,65 @@ vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "LS
 
 -- None-ls
 vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {}) -- desc = "formatting everyting in buffer using none-ls
+
 -- Vim-fugitive
 vim.keymap.set("n", "<leader>gs", "<cmd>Git<CR>", { desc = "Git status" })
 
 -- Vim Specific Mappings
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+
+-- Undotree
+vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Toggle Undotree" })
+
+-- Harpoon keymaps
+local harpoon = require("harpoon")
+local conf = require("telescope.config").values
+
+-- Add file
+vim.keymap.set("n", "<leader>a", function()
+	harpoon:list():add()
+end, { desc = "Harpoon add file" })
+
+-- Jump to files
+vim.keymap.set("n", "<C-h>", function()
+	harpoon:list():select(1)
+end, { desc = "Harpoon file 1" })
+
+vim.keymap.set("n", "<C-t>", function()
+	harpoon:list():select(2)
+end, { desc = "Harpoon file 2" })
+
+vim.keymap.set("n", "<C-n>", function()
+	harpoon:list():select(3)
+end, { desc = "Harpoon file 3" })
+
+vim.keymap.set("n", "<C-s>", function()
+	harpoon:list():select(4)
+end, { desc = "Harpoon file 4" })
+
+-- Telescope Harpoon picker
+local function toggle_harpoon_telescope()
+	local file_paths = {}
+
+	for _, item in ipairs(harpoon:list().items) do
+		table.insert(file_paths, item.value)
+	end
+
+	require("telescope.pickers")
+		.new({}, {
+			prompt_title = "Harpoon",
+			finder = require("telescope.finders").new_table({
+				results = file_paths,
+			}),
+			previewer = conf.file_previewer({}),
+			sorter = conf.generic_sorter({}),
+		})
+		:find()
+end
+
+vim.keymap.set("n", "<C-e>", toggle_harpoon_telescope, {
+	desc = "Open Harpoon Telescope",
+})
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -22,7 +98,7 @@ vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("n", "=ap", "ma=ap'a")
 
-vim.keymap.set("x", "<leader>p", [["_dP]]) -- preserve cpy buffer
+vim.keymap.set("x", "<leader>p", [["_dP]]) -- preserve copy buffer
 
 -- save into system clipboard
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
