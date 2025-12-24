@@ -7,7 +7,6 @@ return {
 		-- C / C++
 		vim.lsp.config.clangd = {
 			capabilities = capabilities,
-			-- optional: extra clangd flags
 			cmd = { "clangd", "--background-index", "--clang-tidy", "--compile-commands-dir=build" },
 		}
 		vim.lsp.enable("clangd")
