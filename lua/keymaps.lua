@@ -33,7 +33,7 @@ vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {}) -- desc = "formatting 
 vim.keymap.set("n", "<leader>gs", "<cmd>Git<CR>", { desc = "Git status" })
 
 -- Vim Specific Mappings
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "<leader>fv", vim.cmd.Ex) -- opens netrw
 
 -- Undotree
 vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Toggle Undotree" })
