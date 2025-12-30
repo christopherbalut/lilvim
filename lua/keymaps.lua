@@ -27,13 +27,10 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP definition" }) -
 vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP refactoring suggestions" }) -- desc = "Lsp refactoring suggestions"
 
 -- None-ls
-vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {}) -- desc = "formatting everyting in buffer using none-ls
+vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "formatting everyting in buffer using none-ls" })
 
 -- Vim-fugitive
 vim.keymap.set("n", "<leader>gs", "<cmd>Git<CR>", { desc = "Git status" })
-
--- Vim Specific Mappings
-vim.keymap.set("n", "<leader>fv", vim.cmd.Ex) -- opens netrw
 
 -- Undotree
 vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Toggle Undotree" })
@@ -48,45 +45,48 @@ vim.keymap.set("n", "<leader>a", function()
 end, { desc = "Harpoon add file" })
 
 -- Jump to files
-vim.keymap.set("n", "<C-h>", function()
+vim.keymap.set("n", "<M-1>", function()
 	harpoon:list():select(1)
 end, { desc = "Harpoon file 1" })
 
-vim.keymap.set("n", "<C-j>", function()
+vim.keymap.set("n", "<M-2>", function()
 	harpoon:list():select(2)
 end, { desc = "Harpoon file 2" })
 
-vim.keymap.set("n", "<C-k>", function()
+vim.keymap.set("n", "<M-3>", function()
 	harpoon:list():select(3)
 end, { desc = "Harpoon file 3" })
 
-vim.keymap.set("n", "<C-l>", function()
+vim.keymap.set("n", "<M-4>", function()
 	harpoon:list():select(4)
 end, { desc = "Harpoon file 4" })
 
 -- Telescope Harpoon picker
-local function toggle_harpoon_telescope()
-	local file_paths = {}
+-- local function toggle_harpoon_telescope()
+-- 	local file_paths = {}
 
-	for _, item in ipairs(harpoon:list().items) do
-		table.insert(file_paths, item.value)
-	end
+--	for _, item in ipairs(harpoon:list().items) do
+--		table.insert(file_paths, item.value)
+-- end
+--
+--	require("telescope.pickers")
+--		.new({}, {
+--			prompt_title = "Harpoon",
+--			finder = require("telescope.finders").new_table({
+--				results = file_paths,
+--			}),
+--			previewer = conf.file_previewer({}),
+--			sorter = conf.generic_sorter({}),
+--		})
+--		:find()
+--end
+vim.keymap.set("n", "<M-e>", function()
+  harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = "Harpoon: menu" })
 
-	require("telescope.pickers")
-		.new({}, {
-			prompt_title = "Harpoon",
-			finder = require("telescope.finders").new_table({
-				results = file_paths,
-			}),
-			previewer = conf.file_previewer({}),
-			sorter = conf.generic_sorter({}),
-		})
-		:find()
-end
+-- Vim Specific Mappings
+vim.keymap.set("n", "<leader>fv", vim.cmd.Ex) -- opens netrw
 
-vim.keymap.set("n", "<C-e>", toggle_harpoon_telescope, {
-	desc = "Open Harpoon Telescope",
-})
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
