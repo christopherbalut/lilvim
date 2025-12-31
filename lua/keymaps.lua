@@ -37,7 +37,7 @@ vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<cr>", { desc = "Toggle Und
 
 -- Harpoon keymaps
 local harpoon = require("harpoon")
-local conf = require("telescope.config").values
+-- local conf = require("telescope.config").values
 
 -- Add file
 vim.keymap.set("n", "<leader>a", function()
@@ -80,13 +80,13 @@ end, { desc = "Harpoon file 4" })
 --		})
 --		:find()
 --end
+
 vim.keymap.set("n", "<M-e>", function()
-  harpoon.ui:toggle_quick_menu(harpoon:list())
+	harpoon.ui:toggle_quick_menu(harpoon:list())
 end, { desc = "Harpoon: menu" })
 
 -- Vim Specific Mappings
 vim.keymap.set("n", "<leader>fv", vim.cmd.Ex) -- opens netrw
-
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")

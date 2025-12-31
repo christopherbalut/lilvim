@@ -15,7 +15,7 @@ vim.opt.relativenumber = true
 -- vim.opt.showmode = false
 
 -- Mouse Options
-vim.opt.mouse = "a"
+vim.opt.mouse = "" -- disable mouse "", enable mouse "a"
 
 vim.opt.smartindent = true -- better indentation
 
