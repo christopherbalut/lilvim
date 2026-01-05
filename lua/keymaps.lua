@@ -86,7 +86,7 @@ vim.keymap.set("n", "<M-e>", function()
 end, { desc = "Harpoon: menu" })
 
 -- Vim Specific Mappings
-vim.keymap.set("n", "<leader>fv", vim.cmd.Ex) -- opens netrw
+vim.keymap.set("n", "<leader>vf", vim.cmd.Ex) -- opens netrw
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
