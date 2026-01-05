@@ -5,4 +5,4 @@ vim.g.maplocalleader = " "
 require("config.lazy")
 require("vim-options")
 require("keymaps")
---require("diagnostics")
+require("diagnostics")
