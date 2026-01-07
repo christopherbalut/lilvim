@@ -27,7 +27,7 @@ vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "LSP definition" }) -
 vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, { desc = "LSP refactoring suggestions" }) -- desc = "Lsp refactoring suggestions"
 
 -- None-ls
-vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "formatting everyting in buffer using none-ls" })
+--vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, { desc = "formatting everyting in buffer using none-ls" })
 
 -- Vim-fugitive
 vim.keymap.set("n", "<leader>gs", "<cmd>Git<CR>", { desc = "Git status" })
