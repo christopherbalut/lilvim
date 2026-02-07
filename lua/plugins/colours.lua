@@ -1,26 +1,29 @@
 return {
 	{
-		"LunarVim/lunar.nvim",
-		priority = 1000,
+		name = "rose-pine",
+		"rose-pine/neovim",
+		lazy = false,
 		config = function()
-			vim.cmd.colorscheme("lunar")
+			require("rose-pine").setup({
+				-- variant = "moon",
+				disable_background = true,
+				-- disable_float_background = true,
+				styles = {
+					italic = false,
+				},
+			})
+
+			vim.cmd("colorscheme rose-pine")
+
+			vim.api.nvim_set_hl(0, "Normal", { bg = "NONE" })
+			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "NONE" })
 		end,
 	},
 	{
-		name = "rose-pine",
-		"rose-pine/neovim",
+		"LunarVim/lunar.nvim",
 		lazy = true,
 		config = function()
-			require("rose-pine").setup({
-				variant = "moon",
-
-				--	disable_background = true,
-				--	disable_float_background = true,
-			})
-
-			vim.cmd("colorscheme rose-pine-moon")
-			vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-			vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+			vim.cmd.colorscheme("lunar")
 		end,
 	},
 	{
