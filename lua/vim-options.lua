@@ -15,7 +15,9 @@ vim.opt.relativenumber = true
 -- vim.opt.showmode = false
 
 -- Mouse Options
-vim.opt.mouse = "" -- disable mouse "", enable mouse "a"
+vim.opt.mouse = "a" -- disable mouse "", enable mouse "a"
+
+vim.opt.guicursor = ""
 
 vim.opt.smartindent = true -- better indentation
 
@@ -29,10 +31,12 @@ vim.opt.undofile = true
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
 
-vim.opt.termguicolors = true -- better colours
+vim.opt.termguicolors = true
 
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
+
+vim.opt.fillchars = { eob = " " }
