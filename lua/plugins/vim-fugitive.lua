@@ -1,4 +1,1 @@
-return {
-	"tpope/vim-fugitive",
-	cmd = { "Git", "Gdiffsplit", "Gvdiffsplit", "Gedit", "Gblame" },
-}
+vim.keymap.set("n", "<leader>gs", "<cmd>Git<CR>", { desc = "Git status" })

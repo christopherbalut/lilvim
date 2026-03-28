@@ -1,13 +1,5 @@
-return {
-	"mbbill/undotree",
+vim.keymap.set("n", "<leader>u", "<cmd>UndotreeToggle<CR>", { desc = "Toggle Undotree" })
 
-	-- Lazy-load
-	cmd = "UndotreeToggle",
-
-	config = function()
-		-- Defaults
-		vim.g.undotree_WindowLayout = 3 -- tree on the right
-		vim.g.undotree_SplitWidth = 35
-		vim.g.undotree_SetFocusWhenToggle = 1
-	end,
-}
+vim.g.undotree_WindowLayout = 3 -- tree on the right
+vim.g.undotree_SplitWidth = 35
+vim.g.undotree_SetFocusWhenToggle = 1
