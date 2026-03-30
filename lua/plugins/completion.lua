@@ -4,10 +4,12 @@ require("blink.cmp").setup({
 
         ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
         ["<C-e>"] = { "hide", "fallback" },
-        ["<CR>"] = { "accept", "fallback" },
+        ["<C-y>"] = { "select_and_accept", "fallback" },
 
         ["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
         ["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+
+        ["<CR>"] = { "fallback" },
     },
 
     completion = {
@@ -27,3 +29,5 @@ require("blink.cmp").setup({
         implementation = "prefer_rust_with_warning",
     },
 })
+
+require("nvim-autopairs").setup({})
