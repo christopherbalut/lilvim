@@ -8,6 +8,7 @@ vim.pack.add({
     "https://github.com/nvim-telescope/telescope.nvim",
     "https://github.com/mbbill/undotree",
     { src = "https://github.com/ThePrimeagen/harpoon",          version = "harpoon2" },
+    "https://github.com/tpope/vim-fugitive",
     "https://github.com/rose-pine/neovim",
     { src = "https://github.com/mason-org/mason.nvim" },
     { src = "https://github.com/mason-org/mason-lspconfig.nvim" },
@@ -22,7 +23,7 @@ require("plugins.telescope")
 require("plugins.undotree")
 require("plugins.harpoon")
 require("plugins.colours")
-require("plugins.vim-fugitive")
+require("plugins.vim-fugitive").setup()
 require("plugins.lsp")
 require("plugins.completion")
 require("plugins.formatting")
